@@ -1,0 +1,11 @@
+﻿@model IQueryable<Blogg.Models.Post>
+
+<a asp-controller="Blog" asp-action="ViewAllPosts" class="btn-primary btn-lg">Start</a>
+
+@foreach (var post in Model)
+    {
+    <h3>@post.Title</h3>
+    <br />
+    <p>@post.Date</p>
+    <p>@post.Content</p>
+    }

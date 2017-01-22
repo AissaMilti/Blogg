@@ -1,0 +1,24 @@
+﻿@model Blogg.Models.ViewModels.BlogNewPostViewModel
+
+<a asp-controller="Blog" asp-action="ViewAllPosts" class="btn-primary btn-lg">Start</a>
+
+<h3>Nytt inlägg</h3>
+
+<form asp-controller="Blog" asp-action="NewPost" method="post">
+    
+    <label asp-for="@Model.Post.Title">Titel</label>
+    <input asp-for="@Model.Post.Title" class="form-control"/>
+    <span asp-validation-for="@Model.Post.Title" ></span>
+
+    <br/>
+    
+    <label asp-for="@Model.Post.Content">Innehåll</label>
+    <textarea id="Content" asp-for="@Model.Post.Content" rows="10" cols="200" class="form-control"></textarea>
+    <span asp-validation-for="@Model.Post.Content"></span>
+    <br/>
+
+    <select asp-for="@Model.Post.CategoryId" asp-items="@Model.Category"></select>
+   
+    <input id="Post" type="submit" value="Posta inlägg" />
+</form>
+

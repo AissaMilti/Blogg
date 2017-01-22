@@ -1,0 +1,29 @@
+﻿@*@model List<Blogg.Models.Post>*@
+@model Blogg.Models.ViewModels.BlogSearchViewModel
+
+<h3> Sök efter inlägg</h3>
+
+<form asp-controller="Blog" asp-action="Search" method="get">
+    
+        <input type="text" name="search" class="form-control"/>
+ 
+    
+        <input type="submit" value="Sök" class="btn-primary"/>
+    
+</form>
+<h3>Inlägg</h3>
+
+    @foreach (var posts in Model.Posts)
+    {
+        @*<a asp-controller="Blog" asp-action="ViewAllPosts" asp-route-id="@posts.Id"></a>*@
+        <h3>@posts.Title</h3>
+        <br/>
+        <p>@posts.Content</p>
+    }
+    <h3>Kategorier</h3>
+    @foreach (var p in Model.Categories)
+    {
+        
+        @p.Posts
+    }
+

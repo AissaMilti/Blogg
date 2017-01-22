@@ -1,0 +1,42 @@
+﻿
+@model Blogg.Models.ViewModels.CategoryViewModel
+
+<a asp-controller="Blog" asp-action="NewPost" class="btn-primary btn-lg"> Nytt inlägg </a>
+<a asp-controller="Blog" asp-action="Search" class="btn-primary btn-lg"> Sök </a>
+<a asp-controller="Blog" asp-action="ViewAllPosts" class="btn-primary btn-lg">Start</a>
+
+<div>
+    <nav style="padding-top: 25px; padding-left: 25px;">
+       @foreach (var item in Model.Categories)
+       {
+        <a asp-controller="Blog" asp-action="Posts" asp-route-id="@item.Id"><h4 style="float: left; padding-left: 10px;">@item.Name</h4></a>
+       } 
+
+    </nav>
+</div>
+
+
+@foreach (var post in Model.Posts)
+{
+    <div class="container">
+        <div class="row">
+            
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="box">
+                        <div class="box-content">
+                            <h2 class="tag-title">@post.Title</h2>
+                            <hr />
+                            <p>@post.Content</p>
+                            <p>@post.Date</p>
+                            <br />
+                           
+                            <a asp-controller="Blog" asp-action="ShowPost" class="btn btn-block btn-primary" asp-route-id="@post.Id">Visa inlägg</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
